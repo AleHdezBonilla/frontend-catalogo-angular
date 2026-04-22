@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h2>Catálogo de Películas</h2>
+
+  <table class="table table-bordered table-striped mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Synopsis</th>
+        <th>Año</th>
+        <th>Cover</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.synopsis }}</td>
+        <td>{{ movie.year }}</td>
+      <td><img [src]="movie.cover" alt="{{ movie.title }}" width="80"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
