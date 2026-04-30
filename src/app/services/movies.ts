@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MoviesService {
 
-  private apiUrl = 'http://localhost/catalogo-api/movies.php';
+  private apiUrl = 'http://127.0.0.1:8000/api/movies';
 
   constructor(private http: HttpClient) {}
 

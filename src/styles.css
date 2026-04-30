@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+
+ body {
+  background-image: url('/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+} 
+
+
+.header {
+  display: flex;
+  align-items: center;   /* centra verticalmente */
+  justify-content: flex-start; /* lo manda a la izquierda */
+  padding: 10px 20px;
+}
+
+.logo {
+  max-width: 500px;
+  height: auto;
+}
