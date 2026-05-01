@@ -1,20 +1,46 @@
-
- body {
+ 
+body {
   background-image: url('/fondo.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-} 
-
-
-.header {
-  display: flex;
-  align-items: center;   /* centra verticalmente */
-  justify-content: flex-start; /* lo manda a la izquierda */
-  padding: 10px 20px;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
+ 
+.header {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+ 
 .logo {
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
+}
+
+ 
+.descripcion {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+ 
+app-root {
+  display: block;
+  background: rgba(255, 255, 255, 0.9);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+ 
+.footer {
+  background-color: #212529;
+  color: white;
+  padding: 20px;
 }
