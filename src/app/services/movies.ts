@@ -2,6 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+export interface Movie {
+  id?: number;
+  title: string;
+  synopsis: string;
+  year: number;
+  cover: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +20,21 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+
+ 
+  getMovies(): Observable<Movie[]> {
+  return this.http.get<Movie[]>(this.apiUrl);
+}
+
+ 
+  addMovie(movie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.apiUrl, movie);
   }
+
+ 
+  updateMovie(id: number, movie: Movie): Observable<Movie> {
+    return this.http.put<Movie>(`${this.apiUrl}/${id}`, movie);
+  }
+
+ 
 }

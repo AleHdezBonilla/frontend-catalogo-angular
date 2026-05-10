@@ -1,6 +1,52 @@
- 
- <div>
-   <table class="table table-bordered table-striped mt-3">
+<h2>
+  {{ selectedMovieId ? 'Editar película' : 'Agregar nueva película' }}
+</h2>
+
+<form>
+
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Título"
+    [(ngModel)]="newMovie.title"
+    name="title"
+  ><br><br>
+
+  <textarea
+    class="form-control"
+    placeholder="Sinopsis"
+    [(ngModel)]="newMovie.synopsis"
+    name="synopsis"
+  ></textarea><br><br>
+
+  <input
+    class="form-control"
+    type="number"
+    placeholder="Año"
+    [(ngModel)]="newMovie.year"
+    name="year"
+  ><br><br>
+
+  <input
+    class="form-control"
+    type="text"
+    placeholder="URL de portada"
+    [(ngModel)]="newMovie.cover"
+    name="cover"
+  ><br><br>
+
+  <button
+    type="button"
+    class="btn btn-primary mb-3"
+    (click)="addMovie()"
+  >
+   {{ selectedMovieId ? 'Actualizar película' : 'Guardar película' }}
+  </button>
+
+</form>
+
+<div>
+  <table class="table table-bordered table-striped mt-3">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -8,17 +54,25 @@
         <th scope="col">Synopsis</th>
         <th scope="col">Año</th>
         <th scope="col">Cover</th>
+        <th>Acciones</th>
       </tr>
     </thead>
-    <tbody>
+ 
+     <tbody>
       <tr *ngFor="let movie of movies">
+         
         <td>{{ movie.id }}</td>
         <td>{{ movie.title }}</td>
         <td>{{ movie.synopsis }}</td>
         <td>{{ movie.year }}</td>
-      <td><img [src]="movie.cover" alt="{{ movie.title }}" width="80"></td>
+        <td><img [src]="movie.cover" alt="{{ movie.title }}" width="80"></td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="editMovie(movie)">
+            Editar
+          </button>
+ 
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
- 
