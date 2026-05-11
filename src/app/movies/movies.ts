@@ -41,8 +41,7 @@ newMovie: Movie = {
   }
 
   addMovie(): void {
-
-  // EDITAR
+ 
   if (this.selectedMovieId) {
 
     this.movieService
@@ -63,7 +62,7 @@ newMovie: Movie = {
 
   } else {
 
-    // AGREGAR
+ 
     this.movieService
       .addMovie(this.newMovie)
       .subscribe({
