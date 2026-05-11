@@ -30,13 +30,13 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "server": "src/main.server.ts",
+   
             "outputMode": "static",
             "security": {
               "allowedHosts": []
             },
             "prerender": false,
-            "ssr": false
+      
           
           },
           "configurations": {
