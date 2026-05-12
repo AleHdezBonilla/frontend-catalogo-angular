@@ -27,6 +27,9 @@ export class MoviesService {
   return this.http.get<Movie[]>(this.apiUrl);
 }
 
+  getMovieById(id: number): Observable<Movie> {
+    return this.http.get<Movie>(`${this.apiUrl}/${id}`);
+  }
  
   addMovie(movie: Movie): Observable<Movie> {
     return this.http.post<Movie>(this.apiUrl, movie);
@@ -37,5 +40,10 @@ export class MoviesService {
     return this.http.put<Movie>(`${this.apiUrl}/${id}`, movie);
   }
 
- 
+  deleteMovie(id: number): Observable<any> { 
+    return this.http.delete(`${this.apiUrl}/${id}`); 
+  } 
+
 }
+
+ 
