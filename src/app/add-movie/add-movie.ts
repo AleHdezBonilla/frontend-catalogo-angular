@@ -22,7 +22,8 @@ export class AddMovieComponent {
     title: '',
     synopsis: '',
     year: 0,
-    cover: ''
+    cover: '',
+    trailer: ''
   };
 
   constructor(

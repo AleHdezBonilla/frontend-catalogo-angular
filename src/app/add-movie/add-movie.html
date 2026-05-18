@@ -4,42 +4,18 @@
 
 <form>
 
-  <input
-    class="form-control mb-3"
-    type="text"
-    placeholder="Título"
-    [(ngModel)]="movie.title"
-    name="title"
-  >
+  <input class="form-control mb-3" type="text" placeholder="Título" [(ngModel)]="movie.title" name="title">
 
-  <textarea
-    class="form-control mb-3"
-    placeholder="Sinopsis"
-    [(ngModel)]="movie.synopsis"
-    name="synopsis"
-  ></textarea>
+  <textarea class="form-control mb-3" placeholder="Sinopsis" [(ngModel)]="movie.synopsis" name="synopsis"></textarea>
 
-  <input
-    class="form-control mb-3"
-    type="number"
-    placeholder="Año"
-    [(ngModel)]="movie.year"
-    name="year"
-  >
+  <input class="form-control mb-3" type="number" placeholder="Año" [(ngModel)]="movie.year" name="year">
 
-  <input
-    class="form-control mb-3"
-    type="text"
-    placeholder="URL de portada"
-    [(ngModel)]="movie.cover"
-    name="cover"
-  >
+  <input class="form-control mb-3" type="text" placeholder="URL de portada" [(ngModel)]="movie.cover" name="cover">
 
-  <button
-    type="button"
-    class="btn btn-primary"
-    (click)="saveMovie()"
-  >
+  <input class="form-control" type="text" placeholder="URL del trailer de YouTube" [(ngModel)]="movie.trailer"
+    name="trailer"><br><br>
+
+  <button type="button" class="btn btn-primary" (click)="saveMovie()">
     Guardar película
   </button>
 

@@ -4,4 +4,5 @@ export interface Movie {
   synopsis: string;
   year: number;
   cover: string;
+  trailer: string;
 }

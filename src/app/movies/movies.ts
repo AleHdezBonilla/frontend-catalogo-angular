@@ -37,7 +37,8 @@ export class MoviesComponent implements OnInit {
     title: '',
     synopsis: '',
     year: 0,
-    cover: ''
+    cover: '', 
+    trailer: ''
   };
 
   constructor(private movieService: MoviesService) {}
@@ -108,7 +109,8 @@ export class MoviesComponent implements OnInit {
       title: movie.title,
       synopsis: movie.synopsis,
       year: movie.year,
-      cover: movie.cover
+      cover: movie.cover,
+      trailer: movie.trailer
     };
   }
 
@@ -120,7 +122,8 @@ export class MoviesComponent implements OnInit {
       title: '',
       synopsis: '',
       year: 0,
-      cover: ''
+      cover: '',
+      trailer: ''
     };
   }
 

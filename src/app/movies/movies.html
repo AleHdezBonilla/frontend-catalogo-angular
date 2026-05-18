@@ -7,7 +7,8 @@
         <th scope="col">Synopsis</th>
         <th scope="col">Año</th>
         <th scope="col">Cover</th>
-        <th>Acciones</th>
+        <th scope="col">Trailer</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
 
@@ -26,14 +27,19 @@
         <td>{{ movie.year }}</td>
         <td><img [src]="movie.cover" alt="{{ movie.title }}" width="80"></td>
         <td>
+          <a [href]="movie.trailer" target="_blank">
+            Ver Trailer
+          </a>
+        </td>
+        <td>
           <a [routerLink]="['/edit-movie', movie.id]" class="btn btn-warning btn-sm me-2">
             Editar
           </a>
-
+        </td>
+        <td>
           <button class="btn btn-danger btn-sm" (click)="deleteMovie(movie.id!)">
             Eliminar
           </button>
-
         </td>
       </tr>
     </tbody>

@@ -25,7 +25,8 @@ export class EditMovieComponent implements OnInit {
     title: '',
     synopsis: '',
     year: 0,
-    cover: ''
+    cover: '',
+    trailer: ''
   };
 
   movieId!: number;
