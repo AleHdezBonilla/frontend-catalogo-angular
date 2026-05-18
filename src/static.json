@@ -1,0 +1,6 @@
+{
+  "root": "dist/frontend-catalogo-angular/browser",
+  "routes": {
+    "/**": "index.html"
+  }
+}

@@ -52,19 +52,24 @@ export class MovieDetailComponent implements OnInit {
   }
 
 
-getYoutubeEmbed(url: string): SafeResourceUrl {
+getYoutubeEmbed(url?: string): SafeResourceUrl {
 
-  if (!url) {
-    return '';
+  if (!url || !url.includes('v=')) {
+
+    return this.sanitizer.bypassSecurityTrustResourceUrl('');
+
   }
 
-  const videoId = url.split('v=')[1];
+  const videoId = url.split('v=')[1].split('&')[0];
 
   const embedUrl =
     `https://www.youtube.com/embed/${videoId}`;
 
-  return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  return this.sanitizer
+    .bypassSecurityTrustResourceUrl(embedUrl);
 }
+
+
 
   deleteMovie(id: number): void {
 
