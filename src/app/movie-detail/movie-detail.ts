@@ -6,6 +6,7 @@ import { MoviesService } from '../services/movies';
 import { from } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
  
+ 
 
 @Component({
   selector: 'app-movie-detail',
@@ -33,6 +34,7 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
 
     const id = Number(this.route.snapshot.paramMap.get('id'));
+      console.log(id);
 
     this.movieService.getMovieById(id)
       .subscribe({

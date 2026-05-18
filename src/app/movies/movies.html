@@ -19,18 +19,29 @@
         <td>{{ movie.id }}</td>
         <td>
 
-          <a [routerLink]="['/movies', movie.id]" class="text-decoration-none fw-bold">
+          <!-- <a [routerLink]="['/movies', movie.id]" class="text-decoration-none fw-bold">
             {{ movie.title }}
-          </a>
+          </a> -->
+          <button
+  class="btn btn-link fw-bold"
+  [routerLink]="['/movies', movie.id]">
+
+  {{ movie.title }}
+
+</button>
 
         </td>
         <td>{{ movie.synopsis }}</td>
         <td>{{ movie.year }}</td>
         <td><img [src]="movie.cover" alt="{{ movie.title }}" width="80"></td>
         <td>
+
+
           <a [href]="movie.trailer" target="_blank">
             Ver Trailer
           </a>
+
+
         </td>
         <td>
           <a [routerLink]="['/edit-movie', movie.id]" class="btn btn-warning btn-sm me-2">
