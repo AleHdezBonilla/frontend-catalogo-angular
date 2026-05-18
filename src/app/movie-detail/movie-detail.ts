@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Movie } from '../models/movie';
 import { MoviesService } from '../services/movies';
 import { from } from 'rxjs';
- 
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
  
 
 @Component({
@@ -25,8 +25,10 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private movieService: MoviesService
+    private movieService: MoviesService, 
+    private sanitizer: DomSanitizer
   ) {}
+
 
   ngOnInit(): void {
 
@@ -37,6 +39,8 @@ export class MovieDetailComponent implements OnInit {
         next: (data) => {
           this.movie = data;
         },
+
+        
         error: (error) => {
           console.error(error);
           alert('Película no encontrada');
@@ -44,6 +48,21 @@ export class MovieDetailComponent implements OnInit {
       });
 
   }
+
+
+getYoutubeEmbed(url: string): SafeResourceUrl {
+
+  if (!url) {
+    return '';
+  }
+
+  const videoId = url.split('v=')[1];
+
+  const embedUrl =
+    `https://www.youtube.com/embed/${videoId}`;
+
+  return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+}
 
   deleteMovie(id: number): void {
 

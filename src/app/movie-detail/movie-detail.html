@@ -12,10 +12,20 @@
     class="img-fluid mb-3"
     width="250"
   >
- <p>
-    <strong>Trailer:</strong>
-    {{ movie.trailer }}
-  </p>
+ <div class="mt-4">
+
+  <h4>Tráiler</h4>
+
+  <iframe
+    width="560"
+    height="315"
+    [src]="getYoutubeEmbed(movie.trailer)"
+    title="YouTube video player"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
+</div>
 
 
   <p>
