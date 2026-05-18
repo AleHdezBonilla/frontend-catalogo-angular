@@ -1,0 +1,46 @@
+<h2 class="mb-4">
+  Editar Película
+</h2>
+
+<form>
+
+  <input
+    class="form-control mb-3"
+    type="text"
+    [(ngModel)]="movie.title"
+    name="title"
+    placeholder="Título"
+  >
+
+  <textarea
+    class="form-control mb-3"
+    [(ngModel)]="movie.synopsis"
+    name="synopsis"
+    placeholder="Sinopsis"
+  ></textarea>
+
+  <input
+    class="form-control mb-3"
+    type="number"
+    [(ngModel)]="movie.year"
+    name="year"
+    placeholder="Año"
+  >
+
+  <input
+    class="form-control mb-3"
+    type="text"
+    [(ngModel)]="movie.cover"
+    name="cover"
+    placeholder="URL de portada"
+  >
+
+  <button
+    type="button"
+    class="btn btn-warning"
+    (click)="updateMovie()"
+  >
+    Actualizar película
+  </button>
+
+</form>

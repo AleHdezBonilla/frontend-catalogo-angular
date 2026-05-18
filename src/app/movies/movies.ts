@@ -1,16 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie, MoviesService } from '../services/movies';
+
+import { MoviesService } from '../services/movies';
+
+import { Movie } from '../models/movie';
+
 import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
+
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule
+  ],
   templateUrl: './movies.html',
   styleUrls: ['./movies.css']
 })
-export class Movies implements OnInit {
+
+
+export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
 
@@ -111,26 +124,21 @@ export class Movies implements OnInit {
     };
   }
 
-  deleteMovie(id: number): void {
+ deleteMovie(id: number) {
 
-    const confirmDelete = confirm('¿Deseas eliminar esta película?');
+  const confirmacion = confirm(
+    '¿Deseas eliminar esta película?'
+  );
 
-    if (!confirmDelete) return;
+  if(confirmacion){
 
-    this.movieService.deleteMovie(id)
-      .subscribe({
-        next: () => {
+    this.movieService.deleteMovie(id).subscribe(() => {
+      this.loadMovies();
+    });
 
-          alert('Película eliminada correctamente');
-
-          this.loadMovies();
-        },
-        error: (error) => {
-          console.error(error);
-          alert('Error al eliminar la película');
-        }
-      });
   }
+
+}
 
  
 searchMovie(): void {

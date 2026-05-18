@@ -1,49 +1,54 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
-
-export interface Movie {
-  id?: number;
-  title: string;
-  synopsis: string;
-  year: number;
-  cover: string;
-}
+import { Movie } from '../models/movie';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MoviesService {
 
-  // private apiUrl = 'http://127.0.0.1:8000/api/movies';
-  private apiUrl = 'https://catalogo-laravel-production.up.railway.app/api/movies';
+  private apiUrl = 'http://127.0.0.1:8000/api/movies';
 
   constructor(private http: HttpClient) {}
 
-
- 
   getMovies(): Observable<Movie[]> {
-  return this.http.get<Movie[]>(this.apiUrl);
-}
+
+    return this.http.get<Movie[]>(this.apiUrl);
+
+  }
 
   getMovieById(id: number): Observable<Movie> {
+
     return this.http.get<Movie>(`${this.apiUrl}/${id}`);
+
   }
- 
+
   addMovie(movie: Movie): Observable<Movie> {
+
     return this.http.post<Movie>(this.apiUrl, movie);
+
   }
 
- 
   updateMovie(id: number, movie: Movie): Observable<Movie> {
-    return this.http.put<Movie>(`${this.apiUrl}/${id}`, movie);
+
+    return this.http.put<Movie>(
+      `${this.apiUrl}/${id}`,
+      movie
+    );
+
   }
 
-  deleteMovie(id: number): Observable<any> { 
-    return this.http.delete(`${this.apiUrl}/${id}`); 
-  } 
+  deleteMovie(id: number): Observable<{message: string}> {
+
+    return this.http.delete<{message: string}>(
+      `${this.apiUrl}/${id}`
+    );
+
+  }
 
 }
-
- 

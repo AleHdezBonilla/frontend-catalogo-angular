@@ -1,96 +1,3 @@
-<hr>
-
-<h3>Buscar película por ID</h3>
-
-<div class="row mb-3">
-
-  <div class="col-md-4">
-    <input
-      type="number"
-      class="form-control"
-      placeholder="Ingresa el ID"
-      [(ngModel)]="searchId"
-      name="searchId"
-    >
-  </div>
-
-  <div class="col-md-2">
-    <button
-      class="btn btn-success"
-      type="button"
-      (click)="searchMovie()"
-    >
-      Buscar
-    </button>
-  </div>
-
-</div>
-
-<div *ngIf="searchedMovie" class="card p-3 mb-3">
-
-  <h4>{{ searchedMovie.title }}</h4>
-
-  <p><strong>ID:</strong> {{ searchedMovie.id }}</p>
-
-  <p><strong>Sinopsis:</strong> {{ searchedMovie.synopsis }}</p>
-
-  <p><strong>Año:</strong> {{ searchedMovie.year }}</p>
-
-  <img
-    [src]="searchedMovie.cover"
-    alt="{{ searchedMovie.title }}"
-    width="150"
-  >
-
-</div>
-
-<h2>
-  {{ selectedMovieId ? 'Editar película' : 'Agregar nueva película' }}
-</h2>
-
-<form>
-
-  <input
-    class="form-control"
-    type="text"
-    placeholder="Título"
-    [(ngModel)]="newMovie.title"
-    name="title"
-  ><br><br>
-
-  <textarea
-    class="form-control"
-    placeholder="Sinopsis"
-    [(ngModel)]="newMovie.synopsis"
-    name="synopsis"
-  ></textarea><br><br>
-
-  <input
-    class="form-control"
-    type="number"
-    placeholder="Año"
-    [(ngModel)]="newMovie.year"
-    name="year"
-  ><br><br>
-
-  <input
-    class="form-control"
-    type="text"
-    placeholder="URL de portada"
-    [(ngModel)]="newMovie.cover"
-    name="cover"
-  ><br><br>
-
-  <button
-    type="button"
-    class="btn btn-primary mb-3"
-    (click)="addMovie()"
-  >
-   {{ selectedMovieId ? 'Actualizar película' : 'Guardar película' }}
-  </button>
-
-</form>
-
 <div>
   <table class="table table-bordered table-striped mt-3">
     <thead>
@@ -103,25 +10,30 @@
         <th>Acciones</th>
       </tr>
     </thead>
- 
-     <tbody>
+
+    <tbody>
       <tr *ngFor="let movie of movies">
-         
+
         <td>{{ movie.id }}</td>
-        <td>{{ movie.title }}</td>
+        <td>
+
+          <a [routerLink]="['/movies', movie.id]" class="text-decoration-none fw-bold">
+            {{ movie.title }}
+          </a>
+
+        </td>
         <td>{{ movie.synopsis }}</td>
         <td>{{ movie.year }}</td>
         <td><img [src]="movie.cover" alt="{{ movie.title }}" width="80"></td>
         <td>
-          <button class="btn btn-warning btn-sm me-2" (click)="editMovie(movie)">
+          <a [routerLink]="['/edit-movie', movie.id]" class="btn btn-warning btn-sm me-2">
             Editar
+          </a>
+
+          <button class="btn btn-danger btn-sm" (click)="deleteMovie(movie.id!)">
+            Eliminar
           </button>
 
-      <button class="btn btn-danger btn-sm"
-              (click)="deleteMovie(movie.id!)">
-        Eliminar
-      </button>
- 
         </td>
       </tr>
     </tbody>

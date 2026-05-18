@@ -1,0 +1,79 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Movie } from '../models/movie';
+import { MoviesService } from '../services/movies';
+import { from } from 'rxjs';
+ 
+ 
+
+@Component({
+  selector: 'app-movie-detail',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
+  templateUrl: './movie-detail.html',
+  styleUrls: ['./movie-detail.css']
+})
+
+export class MovieDetailComponent implements OnInit {
+
+  movie?: Movie;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private movieService: MoviesService
+  ) {}
+
+  ngOnInit(): void {
+
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.movieService.getMovieById(id)
+      .subscribe({
+        next: (data) => {
+          this.movie = data;
+        },
+        error: (error) => {
+          console.error(error);
+          alert('Película no encontrada');
+        }
+      });
+
+  }
+
+  deleteMovie(id: number): void {
+
+  const confirmacion = confirm(
+    '¿Deseas eliminar esta película?'
+  );
+
+  if(confirmacion){
+
+    this.movieService.deleteMovie(id)
+      .subscribe({
+
+        next: () => {
+
+          alert('Película eliminada');
+
+          this.router.navigate(['/movies']);
+
+        },
+
+        error: (error) => {
+
+          console.error(error);
+
+        }
+
+      });
+
+  }
+
+}
+
+}

@@ -1,0 +1,46 @@
+<h2 class="mb-4">
+  Agregar Película
+</h2>
+
+<form>
+
+  <input
+    class="form-control mb-3"
+    type="text"
+    placeholder="Título"
+    [(ngModel)]="movie.title"
+    name="title"
+  >
+
+  <textarea
+    class="form-control mb-3"
+    placeholder="Sinopsis"
+    [(ngModel)]="movie.synopsis"
+    name="synopsis"
+  ></textarea>
+
+  <input
+    class="form-control mb-3"
+    type="number"
+    placeholder="Año"
+    [(ngModel)]="movie.year"
+    name="year"
+  >
+
+  <input
+    class="form-control mb-3"
+    type="text"
+    placeholder="URL de portada"
+    [(ngModel)]="movie.cover"
+    name="cover"
+  >
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="saveMovie()"
+  >
+    Guardar película
+  </button>
+
+</form>
