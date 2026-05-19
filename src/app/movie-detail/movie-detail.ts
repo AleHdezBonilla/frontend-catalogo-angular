@@ -33,23 +33,34 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-      console.log(id);
+  this.route.paramMap.subscribe(params => {
+
+    const id = Number(params.get('id'));
+
+    console.log(id);
 
     this.movieService.getMovieById(id)
       .subscribe({
+
         next: (data) => {
+
           this.movie = data;
+
         },
 
-        
         error: (error) => {
+
           console.error(error);
+
           alert('Película no encontrada');
+
         }
+
       });
 
-  }
+  });
+
+}
 
 
 getYoutubeEmbed(url?: string): SafeResourceUrl {
