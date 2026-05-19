@@ -41,10 +41,9 @@ export class MovieDetailComponent implements OnInit {
     console.log(id);
 
     this.movieService.getMovieById(id)
-      .subscribe(
-        {
+      .subscribe({
 
-       next: (data) => {
+        next: (data) => {
 
           this.movie = data;
           this.cdr.detectChanges();
@@ -65,48 +64,32 @@ export class MovieDetailComponent implements OnInit {
 }
 
 
-getYoutubeEmbed(
-  url?: string
-): SafeResourceUrl {
+getYoutubeEmbed(url?: string): SafeResourceUrl {
 
-  if (!url) {
+  if (!url || !url.includes('v=')) {
 
-    return this.sanitizer
-      .bypassSecurityTrustResourceUrl('');
+    return this.sanitizer.bypassSecurityTrustResourceUrl('');
 
   }
 
-  let videoId = '';
-
-  if (url.includes('v=')) {
-
-    videoId =
-      url.split('v=')[1].split('&')[0];
-
-  }
-  else if (url.includes('youtu.be/')) {
-
-    videoId =
-      url.split('youtu.be/')[1];
-
-  }
+  const videoId = url.split('v=')[1].split('&')[0];
 
   const embedUrl =
     `https://www.youtube.com/embed/${videoId}`;
 
   return this.sanitizer
     .bypassSecurityTrustResourceUrl(embedUrl);
-
 }
 
 
-deleteMovie(id: number): void {
+
+  deleteMovie(id: number): void {
 
   const confirmacion = confirm(
     '¿Deseas eliminar esta película?'
   );
 
-  if (confirmacion) {
+  if(confirmacion){
 
     this.movieService.deleteMovie(id)
       .subscribe({
@@ -122,8 +105,6 @@ deleteMovie(id: number): void {
         error: (error) => {
 
           console.error(error);
-
-          alert('Error al eliminar película');
 
         }
 

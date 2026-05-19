@@ -11,8 +11,8 @@ export class MoviesService {
 
  
  
-  private apiUrl = 'http://127.0.0.1:8000/api/movies';
-  //  private apiUrl = 'https://catalogo-laravel-production.up.railway.app/api/movies';
+    //private apiUrl = 'http://127.0.0.1:8000/api/movies';
+   private apiUrl = 'https://catalogo-laravel-production.up.railway.app/api/movies';
 
   constructor(private http: HttpClient) {}
 
