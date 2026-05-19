@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { MoviesService } from '../services/movies';
 
@@ -37,11 +37,14 @@ export class MoviesComponent implements OnInit {
     title: '',
     synopsis: '',
     year: 0,
-    cover: '', 
+    cover: '',
     trailer: ''
   };
 
-  constructor(private movieService: MoviesService) {}
+  constructor(
+    private movieService: MoviesService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadMovies();
@@ -51,6 +54,7 @@ export class MoviesComponent implements OnInit {
     this.movieService.getMovies().subscribe({
       next: (data) => {
         this.movies = data;
+        this.cdr.detectChanges();
       },
       error: (error) => {
         console.error(error);
@@ -143,7 +147,7 @@ export class MoviesComponent implements OnInit {
 
 }
 
- 
+
 searchMovie(): void {
 
   if (!this.searchId) {
