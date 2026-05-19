@@ -1,4 +1,3 @@
-
 <div *ngIf="movie" class="card p-4">
 
   <h1>{{ movie.title }}</h1>
@@ -21,20 +20,23 @@
     {{ movie.year }}
   </p>
 
-  <div class="mt-4">
+  <div
+  class="mt-4"
+  *ngIf="movie.trailer"
+>
 
-    <h3>Trailer</h3>
+  <h3>Trailer</h3>
 
-    <iframe
-      width="560"
-      height="315"
-      [src]="getYoutubeEmbed(movie.trailer)"
-      title="YouTube video player"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
+  <iframe
+    width="560"
+    height="315"
+    [src]="getYoutubeEmbed(movie.trailer)"
+    title="YouTube video player"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
 
-  </div>
+</div>
 
   <div class="mt-4">
 
