@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Movie } from '../models/movie';
 import { MoviesService } from '../services/movies';
 import { from } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
- 
- 
+
+
 
 @Component({
   selector: 'app-movie-detail',
@@ -26,8 +26,9 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private movieService: MoviesService, 
-    private sanitizer: DomSanitizer
+    private movieService: MoviesService,
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef
   ) {}
 
 
@@ -45,7 +46,7 @@ export class MovieDetailComponent implements OnInit {
         next: (data) => {
 
           this.movie = data;
-
+          this.cdr.detectChanges();
         },
 
         error: (error) => {
